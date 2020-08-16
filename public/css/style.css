@@ -1,0 +1,174 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+}
+html {
+    background-color: rgb(255, 193, 7, 0.7);
+}
+/*========
+  header
+========*/
+.header {
+    background-color: rgb(255, 193, 7, 0.7);
+}
+.menu {
+    opacity: 1;
+}
+.menu-hide {
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+#navbarSupportedContent {
+    font-weight: bolder;
+    font-size: 24px;
+}
+#navbarSupportedContent .nav-link {
+    font-family: "Yanone Kaffeesatz";
+    color: rgb(220, 53, 69, 0.8);
+}
+#navbarSupportedContent .nav-item:hover {
+    border-bottom: groove rgb(220, 53, 69, 0.8);
+}
+.box-search {
+    margin-top: 90px;
+}
+/* single_company */
+.banner {
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+}
+
+.banner .img-middle {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.search-bot {
+    position: relative;
+}
+.box-logo {
+    display: inline-block;
+    position: absolute;
+    left: 50px;
+    top: -50px;
+    background-color: white;
+}
+.logo {
+    position: relative;
+}
+.logo label {
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+}
+.logo img {
+    width: 100px;
+    height: 100px;
+}
+/*========
+  main
+========*/
+/* home/list_jobs,list_company */
+.cursor {
+    cursor: pointer;
+    overflow: hidden;
+}
+.cursor a {
+    color: black;
+}
+.cursor:hover a {
+    text-decoration: none;
+}
+.cursor:hover .body-company {
+    overflow: visible;
+    height: 100%;
+}
+.cursor:hover img {
+    transform: scale(1.1);
+    transition: all 0.5s ease-in-out;
+}
+.box-company {
+    position: relative;
+    margin-bottom: 16px;
+}
+.box-company > img {
+    width: 255px;
+    height: 150px;
+}
+.logo-company {
+    position: absolute;
+    bottom: -20px;
+    left: 30px;
+}
+.body-company {
+    font-size: 10px;
+    opacity: 0.8;
+    width: 255px;
+    height: 180px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.body-company h5 {
+    font-size: 16px;
+}
+
+.create-box {
+    border: 1px solid #d5d5d5;
+    border-radius: 8px;
+    font-size: 8px;
+    padding: 4px;
+}
+.line-clamp {
+    /* display: block; */
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.image-container {
+    position: relative;
+    overflow: hidden;
+}
+.img {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.middle {
+    transition: 0.5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.image-container:hover .image {
+    opacity: 0.3;
+}
+
+.image-container:hover .middle {
+    opacity: 1;
+}
+/*========
+   footer
+=========*/
+.footer {
+    background-color: rgb(255, 193, 7, 0.7);
+    color: rgb(220, 53, 69, 0.8);
+}
+.social i {
+    font-size: 24px;
+}
