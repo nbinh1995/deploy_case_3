@@ -1972,11 +1972,12 @@
                 "shasum": ""
             },
             "require": {
-                "php": "^7.2"
+                "php": "^7.2",
+				"fzaninotto/faker": "^1.5",
             },
             "require-dev": {
                 "dealerdirect/phpcodesniffer-composer-installer": "^0.5.0",
-                "fzaninotto/faker": "^1.5",
+                
                 "jakub-onderka/php-parallel-lint": "^1",
                 "jangregor/phpstan-prophecy": "^0.6",
                 "mockery/mockery": "^1.3",
