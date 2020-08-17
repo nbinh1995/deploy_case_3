@@ -36,6 +36,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        View::share('category', Category::all());
+       // View::share('category', Category::all());
     }
 }
