@@ -1,3 +1,4 @@
+
 var work = work || {};
 
 work.showErrors = function (errors) {
@@ -47,12 +48,13 @@ work.reset = function () {
     $('#WorksModal').find("input[name='last_date']").val('');
     $('#WorksModal').find("input[name='title']").val('');
     $('#WorksModal').find("input[name='position']").val('');
-    $('#WorksModal').find("textarea[name='description']").text('');
-    $('#WorksModal').find("textarea[name='benefit']").text('');
-    $('#WorksModal').find("textarea[name='require']").text('');
+    $('#WorksModal').find("textarea[name='description']").html('');
+    $('#WorksModal').find("textarea[name='benefit']").html('');
+    $('#WorksModal').find("textarea[name='require']").html('');
     $('#WorksModal').find("input[name='salary_min']").val('');
     $('#WorksModal').find("input[name='salary_max']").val('');
-    $('#WorksModal').find("input[name='status']").val('');
+    $('#WorksModal').find("input[name='status']").prop("checked", false);
+    checkStatus();
     $('#WorksModal').find("input[name='contact_name']").val('');
     $('#WorksModal').find("input[name='contact_phone']").val('');
     $('#WorksModal').find("input[name='contact_email']").val('');
@@ -60,9 +62,9 @@ work.reset = function () {
 
 work.create = function (ele) {
     let urln = $(ele).data('urln');
-    let active = $(ele).data('urln');
+    let active = $(ele).data('active');
+    this.reset();
     if (active == 'ACTIVE') {
-        this.reset();
         $('#WorksModal').find('form').attr('action', urln);
         $('#WorksModal').find('h5').text('Đăng Tuyển Dụng');
         $('#WorksModal').find("input[name='_method']").prop("disabled", true)
@@ -98,10 +100,12 @@ work.store = function (ele) {
     });
 }
 
+
+
 work.edit = function (ele) {
     let url = $(ele).data('url');
     let urln = $(ele).data('urln');
-    this.reset();
+    work.reset();
     $('#WorksModal').find('form').attr('action', urln);
     $('#WorksModal').find('h5').text('Chỉnh Sửa Tuyển Dụng');
     $('#WorksModal').find("input[name='_method']").prop("disabled", false)
@@ -110,16 +114,15 @@ work.edit = function (ele) {
         url: url,
         success: function (data) {
             if (data.code == 200) {
-                console.log(data.work);
 
                 $('#WorksModal').find("select[name='category_id']").val(data.work.category_id);
                 $('#WorksModal').find("select[name='type']").val(data.work.type);
                 $('#WorksModal').find("input[name='last_date']").val(data.work.last_date);
                 $('#WorksModal').find("input[name='title']").val(data.work.title);
                 $('#WorksModal').find("input[name='position']").val(data.work.position);
-                $('#WorksModal').find("textarea[name='description']").text(data.work.description);
-                $('#WorksModal').find("textarea[name='benefit']").text(data.work.benefit);
-                $('#WorksModal').find("textarea[name='require']").text(data.work.require);
+                $('#WorksModal').find("textarea[name='description']").html(data.work.description);
+                $('#WorksModal').find("textarea[name='benefit']").html(data.work.benefit);
+                $('#WorksModal').find("textarea[name='require']").html(data.work.require);
                 if (data.work.status) {
                     $('#WorksModal').find("input[name='status']").prop("checked", true);
                 } else {
@@ -212,59 +215,4 @@ work.destroy = function (ele) {
     });
 }
 
-var job = job || {};
 
-let path = location.origin;
-
-job.showJob = function () {
-    let url = $('#jobs').data('url');
-    $.ajax({
-        url: url,
-        method: "GET",
-        dataType: "json",
-        success: function (data) {
-            let table = $('#jobs').DataTable();
-            table
-                .clear()
-                .draw();
-            $.each(data.jobs, function (i, v) {
-                table.row.add([
-                    `${i + 1}`,
-                    `${v.title ?? '...Chưa Cập Nhật...'}`,
-                    `${v.last_date ?? '...Chưa Cập Nhật...'}`,
-                    `${v.hot == 0 ? 'Binh Thuong' : 'Hot'}`,
-                    `<button class="btn btn-primary" onclick="job.hot(${v.id})">is Hot</button>`
-                ]).draw();
-            });
-        }
-    });
-}
-
-job.hot = function (id) {
-    let token = $("meta[name='csrf-token']").attr("content");
-    let url = path + `/dashboard/${id}/jobs_api`;
-    $.ajax({
-        type: 'POST',
-        url: url,
-        data: {
-            '_token': token,
-            '_method': 'PATCH'
-        },
-        success: function (data) {
-            if (data['code'] == 200) {
-                job.showJob();
-                toastr.options = { "positionClass": "toast-bottom-right" };
-                toastr["success"]("Thao tac Thành Công!");
-            }
-        }
-    });
-}
-
-job.init = function () {
-    job.showJob();
-
-}
-
-$(document).ready(function () {
-    job.init();
-});

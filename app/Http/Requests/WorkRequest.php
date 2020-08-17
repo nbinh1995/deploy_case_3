@@ -31,7 +31,7 @@ class WorkRequest extends FormRequest
     {
         return [
             'company_id' => 'required',
-            'title' => 'required|title',
+            'title' => 'required',
             'category_id' => 'required',
             'description' => 'required',
             'require' => 'required',

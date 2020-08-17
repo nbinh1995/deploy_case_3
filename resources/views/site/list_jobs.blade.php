@@ -8,7 +8,7 @@
 
 @section('content')
 <div class="container">
-    <div class="row">
+    <div class="row justify-content-center">
         <div class="col-md-12">
             <h3>{{$works->total()}} Việc Làm Cho Bạn</h3>
             <hr>
@@ -72,13 +72,13 @@
 
             @endforelse
         </div>
-        <div class="col-md-3 mt-3">
+        {{-- <div class="col-md-3 mt-3">
             <div class="card">
                 <div class="card-header"><i class="fas fa-search"></i> Tìm Kiếm Nâng Cao</div>
                 <div class="card-body">Content</div>
                 <div class="card-footer"><button class="btn btn-primary w-100">Tìm Kiếm</button></div>
             </div>
-        </div>
+        </div> --}}
         <div class="col-md-12">
             <div class="row justify-content-center">
                 {{ $works->appends(request()->query()) }}

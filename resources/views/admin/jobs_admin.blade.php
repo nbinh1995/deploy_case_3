@@ -58,5 +58,5 @@
 <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
 <!-- Bootbox -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.4.0/bootbox.min.js"></script>
-<script src="{{asset('js/work.js')}}"></script>
+<script src="{{asset('js/jobs_admin.js')}}"></script>
 @endpush

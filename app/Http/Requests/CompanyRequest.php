@@ -29,7 +29,7 @@ class CompanyRequest extends FormRequest
         return [
             'logo' => 'image|mimes:jpeg,png,jpg,gif,svg|max:5000',
             'cover_photo' => 'image|mimes:jpeg,png,jpg,gif,svg|max:5000',
-            'c_name' => 'required|string|max:255|c_name',
+            'c_name' => 'required|string|max:255',
             'address' => 'required',
             'phone' => 'required|regex:/^0[0-9]{9,10}$/',
             'website' => 'regex:/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/',

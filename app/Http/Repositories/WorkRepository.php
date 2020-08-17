@@ -17,7 +17,6 @@ class WorkRepository extends EloquentRepository  implements WorkRepositoryInterf
 
     public function paginate($amount)
     {
-
         return $this->model::with(['company:id,c_name,logo,address'])
             ->orderBy('created_at', 'desc')
             ->where('last_date', '>=', date("Y-m-d"))
@@ -45,6 +44,20 @@ class WorkRepository extends EloquentRepository  implements WorkRepositoryInterf
             $input['status'] = 0;
         }
         $input['slug'] = Str::slug($data->title);
+
         return $this->model->create($input);
+    }
+
+    public function update($id, $data)
+    {
+        $model = $this->find($id);
+        if (isset($data['status'])) {
+            $data['status'] = 1;
+        } else {
+            $data['status'] = 0;
+        }
+        $data['slug'] = Str::slug($data['title']);
+
+        return $model->update($data);
     }
 }

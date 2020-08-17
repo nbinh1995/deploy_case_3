@@ -109,7 +109,6 @@ html {
 .body-company {
     font-size: 10px;
     opacity: 0.8;
-    width: 255px;
     height: 180px;
     overflow: hidden;
     text-overflow: ellipsis;

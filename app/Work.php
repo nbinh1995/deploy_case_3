@@ -33,7 +33,7 @@ class Work extends Model
     function salary_number($n)
     {
         // first strip any formatting;
-        $n = (0 + str_replace(",", "", $n));
+        // $n = (0 + str_replace(",", "", $n));
 
         // is this a number?
         if (!is_numeric($n)) return 0;

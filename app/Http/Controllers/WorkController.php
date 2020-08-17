@@ -61,7 +61,7 @@ class WorkController extends Controller
      */
     public function edit(Work $work)
     {
-        
+
         return response()->json(['code' => 200, 'work' => $work], 200);
     }
 
@@ -74,16 +74,12 @@ class WorkController extends Controller
      */
     public function update(Request $request, Work $work)
     {
-        try {
-            $this->workRepository->update($work->id, $request->all());
-            $company = $this->companyRepository->find($work->company_id);
+        $this->workRepository->update($work->id, $request->all());
+        $company = $this->companyRepository->find($work->company_id);
+        
+        $job_company = view('partials.job_company', compact('company'))->render();
 
-            $job_company = view('partials.job_company', compact('company'))->render();
-
-            return response()->json(['code' => 200, 'job_company' => $job_company], 200);
-        } catch (\Throwable $th) {
-            return response()->json("lỗi");
-        }
+        return response()->json(['code' => 200, 'job_company' => $job_company], 200);
     }
 
     /**

@@ -10,8 +10,12 @@
             <h6 class="d-block"><i class="fas fa-venus-mars"></i><span class="text-muted">
                     {{$profile->gender ?? '...Chưa Cập Nhật...'}}</span>
             </h6>
-            <h6 class="d-block"><i class="fas fa-birthday-cake"><span
-                        class="text-muted">{{date('d/m/Y', strtotime($profile->birth)) ?? '...Chưa Cập Nhật...'}}</span></i>
+            <h6 class="d-block"><i class="fas fa-birthday-cake"></i>
+                @if ($profile->birth != null)
+                <span class="text-muted">{{date('d/m/Y', strtotime($profile->birth))}}</span>
+                @else
+                <span class="text-muted">{{'...Chưa Cập Nhật...'}}</span>
+                @endif
             </h6>
             <h6 class="d-block"><i class="fas fa-map-marked-alt"></i>
                 <span class="text-muted"> {{$profile->address ?? '...Chưa Cập Nhật...'}}</span>
@@ -110,14 +114,16 @@
                                 <hr>
                                 <div class="form-group">
                                     <label for="bio">Giới thiệu bản thân</label>
-                                    <textarea class="form-control" name="bio" id="bio" placeholder="Giới thiệu bản thân...">{{$profile->bio ?? ''}}</textarea>
+                                    <textarea class="form-control" name="bio" id="bio"
+                                        placeholder="Giới thiệu bản thân...">{{$profile->bio ?? ''}}</textarea>
                                     <span class="text-danger" role="alert">
                                         <strong id="err-bio"></strong>
                                     </span>
                                 </div>
                                 <div class="form-group">
                                     <label for="exp">Kinh nghiệm</label>
-                                    <textarea class="form-control" name="exp" id="exp" placeholder="Kinh nghiệm bản thân...">{{$profile->exp ?? ''}}</textarea>
+                                    <textarea class="form-control" name="exp" id="exp"
+                                        placeholder="Kinh nghiệm bản thân...">{{$profile->exp ?? ''}}</textarea>
                                     <span class="text-danger" role="alert">
                                         <strong id="err-exp"></strong>
                                     </span>
