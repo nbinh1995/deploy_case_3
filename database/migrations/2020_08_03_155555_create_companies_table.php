@@ -30,7 +30,7 @@ class CreateCompaniesTable extends Migration
             $table->enum('active', ['ACTIVE', 'NO_ACTIVE'])->default('NO_ACTIVE');
             $table->softDeletes()->nullable();
             $table->timestamps();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            // $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
         Schema::enableForeignKeyConstraints();
     }

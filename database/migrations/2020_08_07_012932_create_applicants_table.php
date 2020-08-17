@@ -20,8 +20,8 @@ class CreateApplicantsTable extends Migration
             $table->bigInteger('profile_id')->unsigned();
             $table->softDeletes();
             $table->timestamps();
-            $table->foreign('profile_id')->references('id')->on('profiles')->onDelete('cascade');
-            $table->foreign('work_id')->references('id')->on('works')->onDelete('cascade');
+            // $table->foreign('profile_id')->references('id')->on('profiles')->onDelete('cascade');
+            // $table->foreign('work_id')->references('id')->on('works')->onDelete('cascade');
         });
         Schema::enableForeignKeyConstraints();
     }

@@ -35,8 +35,8 @@ class CreateWorksTable extends Migration
             $table->integer('hot')->default(0);
             $table->softDeletes();
             $table->timestamps();
-            $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
-            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+            // $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
+            // $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
         });
         Schema::enableForeignKeyConstraints();
     }

@@ -20,8 +20,8 @@ class CreateFavoritesTable extends Migration
             $table->bigInteger('user_id')->unsigned();
             $table->softDeletes();
             $table->timestamps();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('work_id')->references('id')->on('works')->onDelete('cascade');
+            // $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            // $table->foreign('work_id')->references('id')->on('works')->onDelete('cascade');
         });
         Schema::enableForeignKeyConstraints();
     }
