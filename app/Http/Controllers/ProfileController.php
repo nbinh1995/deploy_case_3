@@ -14,7 +14,7 @@ class ProfileController extends Controller
 
     public function __construct(ProfileRepositoryInterface $profileRepository)
     {
-        $this->middleware('verified');
+        $this->middleware('auth');
         $this->profileRepository = $profileRepository;
     }
 

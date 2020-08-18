@@ -16,7 +16,7 @@ class WorkController extends Controller
 
     public function __construct(WorkRepositoryInterface $workRepository, CompanyRepositoryInterface $companyRepository)
     {
-        $this->middleware('verified');
+        $this->middleware('auth');
         $this->workRepository = $workRepository;
         $this->companyRepository = $companyRepository;
     }
