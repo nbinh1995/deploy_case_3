@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Company;
 use App\Http\Repositories\CompanyRepositoryInterface;
 use App\Http\Requests\CompanyRequest;
@@ -35,7 +36,8 @@ class CompanyController extends Controller
     public function edit(Company $company)
     {
         if (Auth::user()->id == $company->user_id) {
-            return view('site.single_company', compact('company'));
+            $category =  Category::all();
+            return view('site.single_company', compact('company', 'category'));
         } else return redirect()->route('companies.show', compact('company'));
     }
 

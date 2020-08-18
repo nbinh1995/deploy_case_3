@@ -43,14 +43,15 @@ work.showErrors = function (errors) {
     }
 }
 work.reset = function () {
+    console.log('aloalo');
     $('#WorksModal').find("select[name='category_id']").val('');
     $('#WorksModal').find("select[name='type']").val('');
     $('#WorksModal').find("input[name='last_date']").val('');
     $('#WorksModal').find("input[name='title']").val('');
     $('#WorksModal').find("input[name='position']").val('');
-    $('#WorksModal').find("textarea[name='description']").html('');
-    $('#WorksModal').find("textarea[name='benefit']").html('');
-    $('#WorksModal').find("textarea[name='require']").html('');
+    document.getElementById('description-job').value = '';
+    document.getElementById('require').value = '';
+    document.getElementById('benefit').value = '';
     $('#WorksModal').find("input[name='salary_min']").val('');
     $('#WorksModal').find("input[name='salary_max']").val('');
     $('#WorksModal').find("input[name='status']").prop("checked", false);
@@ -58,12 +59,25 @@ work.reset = function () {
     $('#WorksModal').find("input[name='contact_name']").val('');
     $('#WorksModal').find("input[name='contact_phone']").val('');
     $('#WorksModal').find("input[name='contact_email']").val('');
+    $('#err-category-id').text('');
+    $('#err-type').text('');
+    $('#err-last-date').text('');
+    $('#err-title').text('');
+    $('#err-position').text('');
+    $('#err-desc-job').text('');
+    $('#err-benefit').text('');
+    $('#err-require').text('');
+    $('#err-salary-min').text('');
+    $('#err-salary-max').text('');
+    $('#err-contact-name').text('');
+    $('#err-contact-phone').text('');
+    $('#err-contact-email').text('');
 }
 
 work.create = function (ele) {
     let urln = $(ele).data('urln');
     let active = $(ele).data('active');
-    this.reset();
+    work.reset();
     if (active == 'ACTIVE') {
         $('#WorksModal').find('form').attr('action', urln);
         $('#WorksModal').find('h5').text('Đăng Tuyển Dụng');
@@ -120,9 +134,9 @@ work.edit = function (ele) {
                 $('#WorksModal').find("input[name='last_date']").val(data.work.last_date);
                 $('#WorksModal').find("input[name='title']").val(data.work.title);
                 $('#WorksModal').find("input[name='position']").val(data.work.position);
-                $('#WorksModal').find("textarea[name='description']").html(data.work.description);
-                $('#WorksModal').find("textarea[name='benefit']").html(data.work.benefit);
-                $('#WorksModal').find("textarea[name='require']").html(data.work.require);
+                document.getElementById('description-job').value = data.work.description;
+                document.getElementById('require').value = data.work.benefit;
+                document.getElementById('benefit').value = data.work.require;
                 if (data.work.status) {
                     $('#WorksModal').find("input[name='status']").prop("checked", true);
                 } else {

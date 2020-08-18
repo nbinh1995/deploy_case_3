@@ -84,5 +84,29 @@ class DatabaseSeeder extends Seeder
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'remember_token' => Str::random(10),
         ]);
+
+
+        factory(Company::class, 1)->create([
+            'user_id' => User::create([
+                'name' => 'ntqb1',
+                'email' => 'ntqb1@gmail.com',
+                'role' => 1,
+                'email_verified_at' => now(),
+                'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+                'remember_token' => Str::random(10),
+            ])->id
+        ]);
+
+        factory(Profile::class, 1)->create([
+            'user_id' =>  User::create([
+                'name' => 'ntqb0',
+                'email' => 'ntqb0@gmail.com',
+                'role' => 0,
+                'email_verified_at' => now(),
+                'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+                'remember_token' => Str::random(10),
+            ])->id,
+            'name' => 'ntqb0'
+        ]);
     }
 }

@@ -72,11 +72,11 @@ class WorkController extends Controller
      * @param  \App\Work  $work
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Work $work)
+    public function update(WorkRequest $request, Work $work)
     {
         $this->workRepository->update($work->id, $request->all());
         $company = $this->companyRepository->find($work->company_id);
-        
+
         $job_company = view('partials.job_company', compact('company'))->render();
 
         return response()->json(['code' => 200, 'job_company' => $job_company], 200);
