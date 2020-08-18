@@ -11,6 +11,7 @@
 @section('content')
 <div class="container mt-5">
     <div class="row shadow-sm justify-content-center" style="background-color: #f8f9fa">
+        @isset($company->works)
         @forelse ($company->works as $item)
         <div class="col-md-10 cursor bg-white">
             <div class="media">
@@ -72,6 +73,7 @@
         @empty
 
         @endforelse
+        @endisset
     </div>
 </div>
 @endsection
