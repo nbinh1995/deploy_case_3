@@ -15,11 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Auth::routes([
-    'register' => true,
-    'verify' => false,
-    'reset' => false
-]);
+Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/search', 'HomeController@search')->name('search');
 
