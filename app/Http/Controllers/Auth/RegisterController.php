@@ -2,10 +2,16 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Company;
 use App\Http\Controllers\Controller;
+use App\Profile;
+use Illuminate\Support\Str;
+use Illuminate\Auth\Events\Registered;
 use App\Providers\RouteServiceProvider;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -22,7 +28,9 @@ class RegisterController extends Controller
     |
     */
 
-    use RegistersUsers;
+    use RegistersUsers {
+        register as traitregister;
+    }
 
     /**
      * Where to redirect users after registration.
@@ -71,5 +79,35 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
             'role' => $data['role']
         ]);
+    }
+
+    public function register(Request $request)
+    {
+        $this->validator($request->all())->validate();
+
+        event(new Registered($user = $this->create($request->all())));
+        if ($user->role == 0) {
+            Profile::create([
+                'user_id' => $user->id,
+                'name' => $user->name
+            ]);
+        }
+        if ($user->role == 1) {
+            Company::create([
+                'user_id' => $user->id,
+                'slug' => Str::slug($user->id),
+                'logo' => '/images/noimage.png',
+                'cover_photo' => '/images/default-banner.jpg'
+            ]);
+        }
+        $this->guard()->login($user);
+
+        if ($response = $this->registered($request, $user)) {
+            return $response;
+        }
+
+        return $request->wantsJson()
+            ? new Response('', 201)
+            : redirect($this->redirectPath());
     }
 }
