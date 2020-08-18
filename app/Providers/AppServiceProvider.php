@@ -11,6 +11,7 @@ use App\Http\Repositories\UserRepository;
 use App\Http\Repositories\UserRepositoryInterface;
 use App\Http\Repositories\WorkRepository;
 use App\Http\Repositories\WorkRepositoryInterface;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
 
@@ -27,6 +28,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(ProfileRepositoryInterface::class, ProfileRepository::class);
         $this->app->singleton(WorkRepositoryInterface::class, WorkRepository::class);
         $this->app->singleton(CompanyRepositoryInterface::class, CompanyRepository::class);
+        View::share('category', Category::all());
     }
 
     /**
@@ -36,6 +38,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-       // View::share('category', Category::all());
+        URL::forceScheme('https');
     }
 }
