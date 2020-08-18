@@ -28,7 +28,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(ProfileRepositoryInterface::class, ProfileRepository::class);
         $this->app->singleton(WorkRepositoryInterface::class, WorkRepository::class);
         $this->app->singleton(CompanyRepositoryInterface::class, CompanyRepository::class);
-        View::share('category', Category::all());
+        // View::share('category', Category::all());
     }
 
     /**
