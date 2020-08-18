@@ -17,7 +17,7 @@
             </div>
             <div class="row justify-content-around">
                 @forelse ($companies as $item)
-                <div class="col-md-2 mb-2">
+                <div class="col-md-2 mb-5">
                     <div class="cursor">
                         <a href="{{route('companies.show',['company'=> $item])}}">
                             <div class="card box-company">
