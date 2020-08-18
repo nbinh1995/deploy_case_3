@@ -31,14 +31,26 @@ class ProfileRequest extends FormRequest
             'address' => 'required',
             'gender' => 'required',
             'birth' => 'required',
-            'exp' => 'required',
-            'bio' => 'required',
             'cover_letter' =>   'mimes:pdf|max:10000',
             'resume' => 'mimes:pdf|max:10000',
             'avatar' => 'image|mimes:jpeg,png,jpg,gif,svg|max:5000'
         ];
     }
-
+    public function messages()
+    {
+        return [
+            'name.required' => 'Không được để trống',
+            'address.required' => 'Không được để trống',
+            'gender.required' => 'Không được để trống',
+            'birth.required' => 'Không được để trống',
+            'cover_letter.mimes' => 'File không đúng định dạng pdf',
+            'cover_letter.max' => 'File quá lớn',
+            'resume.mimes' => 'File không đúng định dạng pdf',
+            'resume.max' => 'File quá lớn',
+            'avatar.mimes' => 'File không đúng định dạng pdf',
+            'avatar.max' => 'File quá lớn'
+        ];
+    }
     protected function failedValidation(Validator $validator)
     {
         $errors = (new ValidationException($validator))->errors();

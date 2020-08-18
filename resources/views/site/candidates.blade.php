@@ -71,7 +71,7 @@
             <hr>
         </div>
         @empty
-
+        <h3>Chưa Có Đăng Tuyển Dụng</h3>
         @endforelse
         @endisset
     </div>

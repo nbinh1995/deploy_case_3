@@ -48,8 +48,11 @@ class CompanyRepository extends EloquentRepository implements CompanyRepositoryI
                 unlink(public_path($id->logo));
             }
             $imagePath = $data->file('logo');
-            $path = $imagePath->store('avatar', 'public');
-            $id->logo = '/storage/' . $path;
+            $imageName = substr(md5(time()), 0, 10) . '1.' . $imagePath->getClientOriginalExtension();
+            $path = $imagePath->move('avatars', $imageName)->getPathname();
+            // $path = $imagePath->store('avatar', 'public');
+            // $id->logo = '/storage/' . $path;
+            $id->logo = '/' . $path;
         }
 
         if ($data->hasFile('cover_photo') && $data->file('cover_photo')->isValid()) {
@@ -57,8 +60,11 @@ class CompanyRepository extends EloquentRepository implements CompanyRepositoryI
                 unlink(public_path($id->cover_photo));
             }
             $imagePath = $data->file('cover_photo');
-            $path = $imagePath->store('cover', 'public');
-            $id->cover_photo = '/storage/' . $path;
+            $imageName = substr(md5(time()), 0, 10) . '2.' . $imagePath->getClientOriginalExtension();
+            // $path = $imagePath->store('cover', 'public');
+            $path = $imagePath->move('covers', $imageName)->getPathname();
+            // $id->cover_photo = '/storage/' . $path;
+            $id->cover_photo = '/' . $path;
         }
         $id->save();
         return $id;
