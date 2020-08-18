@@ -22,10 +22,11 @@
                         <a href="{{route('companies.show',['company'=> $item])}}">
                             <div class="card box-company">
                                 <div>
-                                    <img src="{{ $item->cover_photo }}" class="card-img-top" alt="...">
+                                    <img src="{{ $item->cover_photo }}" class="card-img-top" alt="..."
+                                        style="height: 100px;">
                                 </div>
                                 <div class="logo-company shadow-sm bg-white" style="left: 0;">
-                                    <img src="{{$item->logo}}" alt="" style="width:60px">
+                                    <img src="{{$item->logo}}" alt="" style="width:60px;height: 60px;">
                                 </div>
                             </div>
                         </a>
@@ -70,7 +71,7 @@
                                     {{$item->salary_number($item->salary_max)}}
                                 </div>
                                 @else
-                                <div class="card-text"><i class="fas fa-dollar-sign"></i> {{$item->address}}
+                                <div class="card-text"><i class="fas fa-dollar-sign"></i> {{__('Thương Lượng')}}
                                 </div>
                                 @endif
 

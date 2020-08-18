@@ -223,9 +223,6 @@
             </div>
             <div class="tab-pane fade" id="connectedServices" role="tabpanel" aria-labelledby="ConnectedServices-tab">
                 @foreach ($profile->applicants as $item)
-                {{-- @php
-                dd($item->work)
-                @endphp --}}
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="media col-md-11">

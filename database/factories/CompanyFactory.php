@@ -19,6 +19,6 @@ $factory->define(Company::class, function (Faker $faker) {
         'slogan' => 'No Pain, No Gain',
         'description' => $faker->paragraph(rand(4, 8)),
         'active' =>  $active[rand(0, 1)],
-        'hot' => rand(0, 1)
+        'hot' => 0
     ];
 });

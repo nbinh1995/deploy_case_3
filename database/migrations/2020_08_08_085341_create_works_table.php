@@ -30,7 +30,7 @@ class CreateWorksTable extends Migration
             $table->enum('type', ['FullTime', 'PartTime']);
             $table->double('salary_min')->nullable();
             $table->double('salary_max')->nullable();
-            $table->boolean('status');
+            $table->tinyInteger('status');
             $table->date('last_date');
             $table->integer('hot')->default(0);
             $table->softDeletes();

@@ -15,6 +15,6 @@ $factory->define(Profile::class, function (Faker $faker) {
         'bio' =>  $faker->paragraph(rand(4, 6)),
         'cover_letter' => '/images/letter.pdf',
         'resume' => '/images/resume.pdf',
-        'avatar' => '/images/img.png'
+        'avatar' => '/images/avatar.png'
     ];
 });
